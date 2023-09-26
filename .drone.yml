@@ -15,6 +15,7 @@ steps:
     from_secret: secretv
   commands:
   - echo $SECRET
+  - echo "Test"
 - name: start-notify
   image: plugins/slack
   settings:
