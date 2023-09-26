@@ -1,0 +1,46 @@
+kind: pipeline
+name: default
+
+steps:
+- name: start-notify
+  image: plugins/slack
+  settings:
+    webhook: https://hooks.slack.com/services/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
+    channel: cicd
+    template: >
+        Build {{build.number}} of {{build.branch}} started. {{build.link}}
+- name: build
+  image: node:9.8.0
+  commands:
+  - sh ./.drone/build.sh
+- name: publish
+  image: plugins/docker
+  settings:
+    repo: luisrojas2/firstdrone
+    auto_tag: true
+    username:
+      from_secret: luisen22
+    password:
+      from_secret: Cospin.2023
+- name: deploy
+  image: docker
+  commands:
+  - sh ./.drone/deploy.sh
+  volumes:
+  - name: docker
+    path: /var/run/docker.sock
+- name: end-notify
+  image: plugins/slack
+  settings:
+    webhook: https://hooks.slack.com/services/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
+    channel: cicd
+    template: >
+      {{#success build.status}}
+        Build {{build.number}} of {{build.branch}} successful. {{build.link}}
+      {{else}}
+        Build {{build.number}} of {{build.branch}} failed. Please fix!. {{build.link}}
+      {{/success}}
+volumes:
+- name: docker
+  host:
+    path: /var/run/docker.sock
