@@ -24,6 +24,6 @@ steps:
     channel: developers
     template: >
         Build {{build.number}} of {{build.branch}} started. {{build.link}}
-when:
-  ref:
-  - refs/tags/*
+  when:
+    ref:
+    - refs/tags/*
