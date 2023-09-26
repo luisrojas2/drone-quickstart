@@ -1,4 +1,4 @@
----
+t---
 kind: pipeline
 type: docker
 name: default
@@ -25,5 +25,5 @@ steps:
     template: >
         Build {{build.number}} of {{build.branch}} started. {{build.link}}
 trigger:
-  branch:
-  - main
+  event:
+  - tag
