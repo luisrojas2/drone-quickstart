@@ -1,5 +1,4 @@
 # drone-quickstart
-
 This repository provides configuration and instructions for how to get started with [Drone CI](https://www.drone.io) from [Harness](https://harness.io)
 
 ## Prerequisites 
