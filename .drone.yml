@@ -4,8 +4,8 @@ type: docker
 name: default
 
 platform:
-  os: darwin
-  arch: arm64
+  os: linux
+  arch: amd64
 
 steps:
 - name: hello
