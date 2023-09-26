@@ -11,8 +11,14 @@ steps:
 - name: hello
   image: busybox
   commands:
-  - echo hello world.
- 
+  - Test msg drone
+- name: start-notify
+  image: plugins/slack
+  settings:
+    webhook: https://hooks.slack.com/services/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
+    channel: cicd
+    template: >
+        Build {{build.number}} of {{build.branch}} started. {{build.link}}
 trigger:
   branch:
   - main
