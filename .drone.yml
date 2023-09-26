@@ -16,7 +16,6 @@ steps:
   image: plugins/slack
   settings:
     webhook: https://hooks.slack.com/services/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
-    channel: developers
     template: >
         Build {{build.number}} of {{build.branch}} started. {{build.link}}
 trigger:
