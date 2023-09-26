@@ -10,12 +10,15 @@ platform:
 steps:
 - name: hello
   image: busybox
+  environment:
+   SECRET:
+    from_secret: secretv
   commands:
-  - echo $secretv
+  - echo $SECRET
 - name: start-notify
   image: plugins/slack
   settings:
-    webhook: https://hooks.slack.com/services/T05U1PZGMC2/B05UEDJQX33/$secretv
+    webhook: https://hooks.slack.com/services/T05U1PZGMC2/B05UEDJQX33/$SECRET
     channel: developers
     template: >
         Build {{build.number}} of {{build.branch}} started. {{build.link}}
