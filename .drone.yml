@@ -25,5 +25,5 @@ steps:
     template: >
         Build {{build.number}} of {{build.branch}} started. {{build.link}}
 trigger:
-event:
+ref:
 - refs/tags/*
