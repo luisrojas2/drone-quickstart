@@ -11,7 +11,7 @@ steps:
 - name: hello
   image: busybox
   commands:
-  - test msg drone
+  - echo test msg drone
 - name: start-notify
   image: plugins/slack
   settings:
