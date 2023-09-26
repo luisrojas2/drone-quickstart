@@ -26,4 +26,4 @@ steps:
         Build {{build.number}} of {{build.branch}} started. {{build.link}}
 trigger:
 event:
-- tag
+- refs/tags/*
