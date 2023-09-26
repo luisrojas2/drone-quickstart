@@ -15,7 +15,7 @@ steps:
 - name: start-notify
   image: plugins/slack
   settings:
-    webhook: https://hooks.slack.com/services/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
+    webhook: https://hooks.slack.com/services/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
     channel: dev
     template: >
         Build {{build.number}} of {{build.branch}} started. {{build.link}}
