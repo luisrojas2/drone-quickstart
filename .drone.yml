@@ -24,9 +24,9 @@ steps:
     channel: developers
     template: >
       {{#success build.status}}
-        build - {{repo.name}} - {{build.number}} succeeded. Tag Created by {{build.author}} link {{build.link}} date: {{build.created}}
+        Repo: {{repo.name}}, build #: {{build.number}} succeeded. Tag: {{build.tag}} created by user: {{build.author}}. Reference link {{build.link}} 
       {{else}}
-        build  {{repo.name}} - {{build.number}} failed. Tagiing attemp by {{build.author}}  Fix me please. <@channelnam> <@someone>
+        Repo: {{repo.name}}, build #: {{build.number}} failed. Tagging attemp by {{build.author}}  Fix me please. <@channelnam> <@someone>
       {{/success}}
   when:
     ref:
