@@ -1,0 +1,15 @@
+- name: start-notify
+  image: plugins/slack
+  settings:
+    webhook: 
+      from_secret: slack_webhook
+    channel: developers
+    template: >
+      {{#success build.status}}
+        The tag: {{build.tag}} on Repository: {{repo.name}} Build #: {{build.number}} Created by user: {{build.author}} Succeeded. Link reference {{build.link}}. 
+      {{else}}
+        The tagging attemp by {{build.author}} on Repo: {{repo.name}} failed. Fix me please. <@channelnam> <@someone> Link reference {{build.link}}.
+      {{/success}}
+  when:
+    ref:
+    - refs/tags/*
