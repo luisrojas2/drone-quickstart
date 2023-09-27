@@ -23,7 +23,11 @@ steps:
       from_secret: slack_webhook
     channel: developers
     template: >
-        Build {{build.number}} of {{build.branch}} started. {{build.link}}
+      {{#success build.status}}
+        build - {{repo.name}} - {{build.number}} succeeded. Tag Created by {{build.author}} link {{build.link}} date: {{build.created}}
+      {{else}}
+        build  {{repo.name}} - {{build.number}} failed. Tagiing attemp by {{build.author}}  Fix me please. <@channelnam> <@someone>
+      {{/success}}
   when:
     ref:
     - refs/tags/*
